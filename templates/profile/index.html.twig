@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfileController!{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1>Hello {{ firstname }} 😃</h1>
+    {% if is_granted('ROLE_ADMIN') %}
+        <p>You are logged as supercollection webmaster ! <a href="{{ path('add_album') }}">Add albums</a></p>
+    {% endif %}
+    <ul class="albums-list">
+    {% for collection in collections %}
+        <li>
+            <p><span>{{ collection.year }}</span> - {{ collection.title }}</p>
+            <p class="country">{{ collection.country }}</p>
+            <a href="{{ path('remove_album_from_my_collection', {'id': collection.id}) }}" class="delete">Delete</a>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

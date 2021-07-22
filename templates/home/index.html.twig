@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Welcome !</h1>
+        {% if is_granted('ROLE_ADMIN') %}
+            <p>You are logged as supercollection webmaster ! <a href="{{ path('add_album') }}">Add albums</a></p>
+        {% endif %}
+    </div>
+{% endblock %}
